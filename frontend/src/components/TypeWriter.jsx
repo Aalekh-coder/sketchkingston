@@ -1,5 +1,6 @@
 import Typewriter from "typewriter-effect";
 
+
 const TypeWriterTitle = () => {
   return (
     <Typewriter 
