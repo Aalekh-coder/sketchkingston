@@ -8,6 +8,8 @@ import connectDb from "./Config/db.js";
 
 // Routes
 import userRoutes from "./Routes/userRoutes.js";
+import productRoute from "./Routes/productRoutes.js"
+import uploadRoute from "./Routes/uploadRoutes.js"
 
 
 dotenv.config();
@@ -22,6 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoute);
+app.use("/api/upload", uploadRoute)
 
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.listen(port, () => console.log("server running on port 😘"));

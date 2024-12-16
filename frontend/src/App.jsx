@@ -1,15 +1,16 @@
-import {Outlet} from "react-router-dom"
-import {ToastContainer} from "react-toastify"
+import { Outlet } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import Header from "./components/Header"
-
+import Navbar from "./components/Navbar"
 
 const App = () => {
   return (
     <>
       <ToastContainer />
-      <Header/>
-    <main><Outlet/></main>
+      <Navbar />
+      <main>
+        <Outlet/>
+      </main>
     </>
   )
 }

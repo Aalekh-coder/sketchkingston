@@ -5,8 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bebas: ['"Bebas Neue"', 'sans-serif'],
+        'roboto-slab': ['"Roboto Slab"', 'serif']
+      },
+    },
   },
   plugins: [],
 }
-

@@ -2,13 +2,14 @@ import Typewriter from "typewriter-effect";
 
 const TypeWriterTitle = () => {
   return (
-    <Typewriter
+    <Typewriter 
       options={{ loop: true }}
+      
       onInit={(Typewriter) => {
-        Typewriter.typeString("Convert your video or voice into a blog post in second with the power of AI✨")
+        Typewriter.typeString("Convert your Image into a creative visual at✨")
           .pauseFor(500)
           .deleteAll()
-          .typeString("📝 AI-powered Insights.")
+          .typeString("Welcome to SketchKingston 💖")
           .start();
       }}
     />

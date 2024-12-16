@@ -22,10 +22,10 @@ export const authenticate = asyncHandle(async (req, res, next) => {
   }
 });
 
-export const isSeller = (req, res, next) => {
+  export const isSeller = (req, res, next) => {
   if (req.user && req.user.isSeller) {
     next();
   } else {
-    res.status(401).send("Not authorized as an admin");
+    res.status(401).send("Not authorized as an seller");
   }
 };
