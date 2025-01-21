@@ -13,7 +13,7 @@ import store from "./redux/store.js"
 import Dashboard from './page/NavItems/Dashboard.jsx';
 import ProfileEdit from './page/dashboard/Profile.jsx';
 import AddProduct from './page/dashboard/AddProduct.jsx';
-import ArtGallery from './page/dashboard/ArtGallery.jsx';
+// import ArtGallery from './page/dashboard/ArtGallery.jsx';
 import EditeProduct from './page/dashboard/EditProduct.jsx';
 
 const router = createBrowserRouter(
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       <Route path='/dashboard' element={<Dashboard />} >
         <Route path="profileEdit" element={<ProfileEdit/>} />
         <Route path="add" element={<AddProduct/>} />
-        <Route path="yourgallery" element={<ArtGallery />} >
+        <Route path="yourgallery" >
         <Route path=":id" element={<EditeProduct/>} />
         
         </Route>

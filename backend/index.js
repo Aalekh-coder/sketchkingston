@@ -1,32 +1,35 @@
-import path from "path";
-import express from "express";
+// this is new backend 
+
+
+import express, { json, urlencoded } from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import fileUpload from "express-fileupload";
+import cors from "cors";
 
-//Utiles
+import userRoutes from "./Routes/userRoutes.js"
+import productRoutes from "./Routes/productRoutes.js"
+
 import connectDb from "./Config/db.js";
-
-// Routes
-import userRoutes from "./Routes/userRoutes.js";
 
 dotenv.config();
 
-const port = process.env.PORT || 5000;
-
 connectDb();
-const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+const app = express();
+const Port = process.env.PORT || 3000;
+
 app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
+  cors({
+    origin: "http://localhost:5173",
   })
 );
+app.use(json());
+app.use(urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
-app.listen(port, () => console.log("server running on port 😘"));
+
+
+app.listen(Port, () => console.log("server running on port 😎", Port));

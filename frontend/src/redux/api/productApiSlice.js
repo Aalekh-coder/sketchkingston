@@ -1,9 +1,9 @@
-import { PRODUCT_URL, UPLOAD_URL } from "../constants";
+import { PRODUCT_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createProduct: builder.mutation({
+    addProduct: builder.mutation({
       query: (productData) => ({
         url: `${PRODUCT_URL}`,
         method: "POST",
@@ -11,33 +11,35 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
-    uploadProductImage: builder.mutation({
-      query: (data) => ({
-        url: `${UPLOAD_URL}`,
-        method: "POST",
-        body: data,
+    allProduct: builder.query({
+      query: () => `${PRODUCT_URL}`,
+    }),
+    productById: builder.query({
+      query: (productId) => ({
+        url: `${PRODUCT_URL}/${productId}`,
       }),
     }),
-    removeProductById: builder.mutation({
+    updateProduct: builder.mutation({
+      query: ({ productId, formData }) => ({
+        url: `${PRODUCT_URL}/${productId}`,
+        method: "PUT",
+        body: formData,
+      }),
+    }),
+    deleteProduct: builder.mutation({
       query: (productId) => ({
         url: `${PRODUCT_URL}/${productId}`,
         method: "DELETE",
       }),
       providesTags: ["Product"],
     }),
-    allProductOfSeller: builder.query({
-      query: (data) => ({
-        url: PRODUCT_URL,
-        method: "GET",
-        body:data
-  })
-})
-
   }),
 });
 
 export const {
-  useCreateProductMutation,
-  useUploadProductImageMutation,
-  useAllProductOfSellerQuery
+  useAddProductMutation,
+  useAllProductQuery,
+  useProductByIdQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
 } = productApiSlice;
