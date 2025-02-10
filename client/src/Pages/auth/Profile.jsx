@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { useProfileEditMutation } from "../../redux/api/userApiSlice";
-import Loader from "../../components/Loader";
+import Loader from "../../Components/Loader";
 
 const ProfileEdit = () => {
   const [username, setUsername] = useState("");
