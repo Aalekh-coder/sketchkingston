@@ -4,18 +4,28 @@ import {
   authenticate,
   authorizedSeller,
 } from "../Middlewares/authMiddleware.js";
-
-import { addProduct, updateProduct,getProductById,removeProduct, allProducts } from "../Controllers/productController.js";
+import {
+  addProduct,
+  products,
+  productUpdateById,
+  deleteProduct,
+  getProductById,
+  allProductOfSeller
+} from "../Controllers/productController.js";
 
 const router = Router();
 
 router
-  .route("/").get(authenticate,allProducts)
+  .route("/")
+  .get(products)
   .post(authenticate, authorizedSeller, formidable(), addProduct);
 
+router
+  .route("/:id")
+  .get(authenticate, getProductById)
+  .put(authenticate, authorizedSeller, formidable(), productUpdateById)
+  .delete(authenticate, authorizedSeller, deleteProduct);
 
-router.route("/:id").get(getProductById)
-  .put(authenticate, authorizedSeller, formidable(), updateProduct)
-  .delete(authenticate,authorizedSeller,removeProduct)
+  router.route("/seller/:id").get(authenticate, authorizedSeller, allProductOfSeller)
 
 export default router;

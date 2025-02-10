@@ -1,6 +1,3 @@
-// this is new backend 
-
-
 import express, { json, urlencoded } from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -8,6 +5,7 @@ import cors from "cors";
 
 import userRoutes from "./Routes/userRoutes.js"
 import productRoutes from "./Routes/productRoutes.js"
+
 
 import connectDb from "./Config/db.js";
 
@@ -28,7 +26,8 @@ app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
-app.use("/api/products", productRoutes);
+app.use("/api/product", productRoutes);
+
 
 
 

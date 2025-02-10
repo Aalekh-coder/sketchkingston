@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/": "https://sketchkingston.onrender.com",
+      "/api/": "http://localhost:5000",
       "/uploads/": "https://sketchkingston.onrender.com",
     },
   },
