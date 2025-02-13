@@ -31,7 +31,6 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Product"],
     }),
-    // http://localhost:5000/api/product/seller/67a97b696aa184a487fa9028
 
     allSellerProduct: builder.query({
       query: (productId) =>`${PRODUCT_URL}/seller/${productId}`

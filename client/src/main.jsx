@@ -14,6 +14,7 @@ import CardPreview from './Pages/Market/CardPreview.jsx';
 import SellerDashboard from './Pages/SellerDashboard/SellerDashboard.jsx';
 import PortfolioCreate from "./Pages/SellerDashboard/PortfolioCreate.jsx"
 import ArtGallery from "./Pages/SellerDashboard/ArtGallery.jsx"
+// import EditArts from './Pages/SellerDashboard/EditArts.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path='/createPortfolio/profile' element={<Profile />} />
       <Route path='/createPortfolio/create' element={<PortfolioCreate />} />
       <Route path='/createPortfolio/artGallery' element={<ArtGallery />} />
+      {/* <Route path='/createPortfolio/edit/:id' element={<EditArts />} /> */}
 
       
       

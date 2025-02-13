@@ -121,7 +121,6 @@ export const allProductOfSeller = asyncHandler(async (req,res) => {
     }
 
     res.status(201).json(product)
-    console.log(product);
   } catch (error) {
     console.error(error)
     res.status(501).json({

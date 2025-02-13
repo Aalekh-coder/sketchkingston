@@ -42,7 +42,7 @@ const ProductList = () => {
 
               {/* Edit Button */}
               <Link
-                to={`/edit/${product._id}`}
+                to={`/createPortfolio/edit/${product._id}`}
                 className="px-3 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600"
               >
                 Edit
