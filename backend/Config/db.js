@@ -1,15 +1,16 @@
-import {connect} from "mongoose";
 
-const connectDb = async () => {
-    try {
-        await connect(process.env.MONGO_URI, {
-            connectTimeoutMS:30000
-        })
-        console.log("connect done ✔");
-    } catch (error) {
-        console.error("MongoDb connection error: ", error.message);
-        process.exit(1);
-    }
-}
 
-export default connectDb;
+import mongoose from "mongoose";
+import { MONGO_URI } from "./env.js";
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGO_URI,{dbName:"sketchkingston"});
+    console.log(`Successfully connnected to mongoDB 👍`);
+  } catch (error) {
+    console.error(`ERROR: ${error.message}`);
+    process.exit(1);
+  }
+};
+
+export default connectDB;

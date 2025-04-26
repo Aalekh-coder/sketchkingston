@@ -1,34 +1,34 @@
-import { Schema,model } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: "User name is required",
+      trim: true,
+      minLength: 2,
+      maxLength: 50,
     },
     email: {
       type: String,
-      required: true,
+      required:"User Email is required",
       unique: true,
+      trim: true,
+      lowercase: true,
+      minLength: 5,
     },
     password: {
       type: String,
-      required: true,
-        },
-    
-    isSeller:{
-        type:Boolean,
-        required:true,
-        default:false
+      required: "User Password is required",
     },
-    
-    isAdmin:{
-        type:Boolean,
-        required:true,
-        default:false
+    isSeller:{
+      type: Boolean,
+      required:true,
+      default:false
     }
   },
   { timestamps: true }
 );
+
 const User = model("User", userSchema);
 export default User;

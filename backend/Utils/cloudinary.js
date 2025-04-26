@@ -1,16 +1,22 @@
 import cloudinary from "cloudinary";
+import multer from "multer";
 
-const uploadToCloudinary = async (filePath) => {
-  try {
-    const result = await cloudinary.uploader.upload(filePath);
-    return {
-      url: result.secure_url,
-      publicId: result.publicId
-    }
-  } catch (error) {
-    console.error("Error while upload to cloudinary", error);
-    throw new Error("Error while upload to cloudinary")
-  }
-}
+cloudinary.v2.config({
+  cloud_name: "drqln2yd0",
+  api_key: "274897151272625",
+  api_secret: "WzPl8UyhElNrQNbf4PMt4pCPX6o",
+});
 
-export default uploadToCloudinary;
+const storage = multer.memoryStorage();
+
+const imageUploadUtil = async (file) => {
+  const result = await cloudinary.v2.uploader.upload(file, {
+    resource_type: "auto",
+  });
+
+  return result;
+};
+
+const upload = multer({ storage });
+
+export { upload, imageUploadUtil };
