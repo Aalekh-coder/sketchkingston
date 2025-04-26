@@ -15,6 +15,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       query: (id) => `${PRODUCT_URL}/art/${id}`, // Fetch a product by ID
       providesTags: ["Product"],
     }),
+    getArtByCategory: builder.query({
+      query: (category) => `${PRODUCT_URL}/category/${category}`, // Fetch a product by ID
+      providesTags: ["Product"],
+    }),
     createProduct: builder.mutation({
       query: (newProduct) => ({
         url: PRODUCT_URL,
@@ -38,6 +42,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (result, error, id) => [{ type: "Product", id }],
     }),
+
+
+
   }),
 });
 
@@ -47,5 +54,6 @@ export const {
   useCreateProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
-  useGetArtistArtsQuery
+  useGetArtistArtsQuery,
+  useGetArtByCategoryQuery
 } = productApiSlice;
