@@ -78,3 +78,14 @@ export const logout = asyncHandler(async (req, res) => {
 
   res.status(200).json({ message: "Logged out successfully" });
 });
+
+export const getOtherUsers = asyncHandler(async (req, res) => {
+  try {
+    const loggedInUser = req.id;
+    const otherUsers = await User.find({ _id: { $ne: loggedInUser } }).select("-password");
+    console.log(loggedInUser);
+    return res.status(200).json(otherUsers)
+  } catch (error) {
+    console.log(error);
+  }
+})
